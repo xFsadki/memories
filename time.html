@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./assets/css/global.css">
+    <link rel="stylesheet" href="./assets/css/time.css">
+    <title>Mémoire</title>
+</head>
+
+<body>
+    <div id="main">
+        <img src="./assets/img/love_1.svg">
+        <div id="countup">
+            <h1 id="days">0</h1>
+            <span id="days-span">jours</span>
+
+            <h2><span id="hour">300</span>h : <span id="minute"></span>min : <span id="second"></span>s</h2>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+function calculerTempsEcoule() {
+    // Date de départ : 20 mai 2024
+    const dateDepart = new Date(2024, 4, 20); // Les mois sont indexés à partir de 0, donc 4 = mai
+
+    // Date actuelle
+    const dateActuelle = new Date();
+
+    // Différence en millisecondes
+    const diffMs = dateActuelle.getTime() - dateDepart.getTime();
+
+    // Conversion en jours, heures, minutes et secondes
+    const msParJour = 1000 * 60 * 60 * 24;
+    const msParHeure = 1000 * 60 * 60;
+    const msParMinute = 1000 * 60;
+    const msParSeconde = 1000;
+
+    const jours = Math.floor(diffMs / msParJour);
+    const heures = Math.floor((diffMs % msParJour) / msParHeure);
+    const minutes = Math.floor((diffMs % msParHeure) / msParMinute);
+    const secondes = Math.floor((diffMs % msParMinute) / msParSeconde);
+
+    // Calcul du nombre total d'heures cumulées (en jours * 24 + heures)
+    const totalHeures = jours * 24 + heures;
+
+    // Calcul du nombre total de minutes cumulées (en jours * 24 * 60 + heures * 60 + minutes)
+    const totalMinutes = jours * 24 * 60 + heures * 60 + minutes;
+
+    // Calcul du nombre total de secondes cumulées (en jours * 24 * 60 * 60 + heures * 60 * 60 + minutes * 60 + secondes)
+    const totalSecondes = jours * 24 * 60 * 60 + heures * 60 * 60 + minutes * 60 + secondes;
+
+    // Calcul des années et mois écoulés
+    const annees = Math.floor(jours / 365);
+    const mois = Math.floor((jours % 365) / 30); // Environ 30 jours par mois
+
+    $("#days").text(jours);
+    $("#hour").text(totalHeures);
+    $("#minute").text(totalMinutes)
+    $("#second").text(totalSecondes)
+}
+
+// Exemple d'utilisation
+calculerTempsEcoule();
+
+setInterval(() => {
+    calculerTempsEcoule();
+}, 1000); // Un cœur par seconde
+
+</script>
+
+
+<script>
+    // Fonction pour générer une position aléatoire sur la page
+    function generateHeartRandomPosition() {
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+
+        const x = Math.random() * width; // Position horizontale aléatoire
+        const y = Math.random() * height; // Position verticale aléatoire
+
+        return { x, y };
+    }
+
+    // Fonction pour créer un cœur
+    function createFloatingHeart() {
+        const heart = document.createElement('span');
+        heart.textContent = '❤️';
+        heart.classList.add('heart');
+
+        // Générer une position aléatoire
+        const { x, y } = generateHeartRandomPosition();
+        heart.style.left = `${x}px`;
+        heart.style.top = `${y}px`;
+
+        // Ajoute le cœur au body
+        document.body.appendChild(heart);
+
+        // Supprime le cœur après l'animation
+        setTimeout(() => {
+            heart.remove();
+        }, 2000); // Durée de l'animation
+    }
+
+    // Générer des cœurs à des intervalles réguliers
+    function startRandomHearts() {
+        setInterval(() => {
+            createFloatingHeart();
+        }, 2500); // Un cœur par seconde
+    }
+
+    // Démarrer les cœurs aléatoires
+    createFloatingHeart();
+    startRandomHearts();
+</script>

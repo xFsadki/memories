@@ -1,0 +1,12 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Pour éviter des barres de défilement si un cœur sort */
+    background-color: #E6EBE0;
+    position: relative;
+    height: 100vh;
+}
+
+h1 {
+    color: #F4F1BB;
+}

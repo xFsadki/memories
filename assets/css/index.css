@@ -1,0 +1,99 @@
+#safebox-wrapper {
+    width: 50vw;
+    margin-left: 25vw;
+    height: 40vh;
+    background-color: #9BC1BC;
+    border-radius: 1rem;
+    text-align: center;
+}
+
+#safebox {
+    display: flex;
+    align-items: center;
+}
+
+#safebox-image, #safebox-password {
+    text-align: center;
+}
+
+#safebox-image {
+    background-image: url(../img/safebox-image-1.png);
+    background-size: cover;
+    background-position: right;
+    margin-left: 1rem;
+    height: 30vh;
+}
+
+#safebox-password {
+    display: flex;
+    gap: 1rem;
+}
+
+#safebox-password input[type='password'] {
+    border: none;
+    background-color: #E6EBE0;
+    padding: .4rem;
+    border-radius: 1rem;
+    min-width: 40%;
+}
+
+#safebox-password button {
+    border: none;
+    background-color: #E6EBE0;
+    padding: .4rem;
+    min-width: 40%;
+}
+
+
+.safebox-content {
+    flex-grow: 1;
+}
+
+@media only screen and (max-width: 1024px) {
+    #safebox {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    #safebox-wrapper {
+        margin-left: 0;
+        width: 100%;
+        margin-top: 10vh;
+        height: 60vh;
+    }
+
+    #safebox-image {
+        width: 100%;
+    }
+}
+
+
+
+/* HEART ANIMATION */
+#safebox-password {
+    position: relative;
+}
+
+.heart {
+    position: absolute;
+    font-size: 20px;
+    color: red;
+    animation: heart-animation 1s forwards;
+}
+
+@keyframes heart-animation {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.5);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(2);
+    }
+}

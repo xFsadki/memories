@@ -1,0 +1,64 @@
+h1{
+    color: #fc5b5b;
+}
+
+#countup {
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+    flex-direction:column;
+}
+
+#days {
+    margin-top: 1rem;
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: .5rem;
+}
+
+#days-span {
+    color: #c96060;
+    font-weight: bold;
+    font-size: 1.6rem;
+}
+
+@media only screen and (max-width: 1024px) {
+    #main {
+        display: flex;
+        justify-content: center; /* Centre horizontalement */
+        align-items: center; /* Centre verticalement */
+        height: 100%; /* Ajustez si nécessaire */
+        flex-direction:column;
+    }
+
+    #main img {
+        width: 80vw;
+    }
+}
+
+/* HEART ANIMATION */
+#safebox-password {
+    position: relative;
+}
+
+.heart {
+    position: absolute;
+    font-size: 20px;
+    color: red;
+    animation: heart-animation 1s forwards;
+}
+
+@keyframes heart-animation {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.5);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(2);
+    }
+}
