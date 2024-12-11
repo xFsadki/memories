@@ -32,37 +32,34 @@ function calculerTempsEcoule() {
     // Date actuelle
     const dateActuelle = new Date();
 
-    // Différence en millisecondes
-    const diffMs = dateActuelle.getTime() - dateDepart.getTime();
+    // Calcul de la différence en millisecondes
+    const diffMs = dateActuelle - dateDepart;
 
-    // Conversion en jours, heures, minutes et secondes
+    // Calcul du nombre de jours, heures, minutes et secondes
     const msParJour = 1000 * 60 * 60 * 24;
     const msParHeure = 1000 * 60 * 60;
     const msParMinute = 1000 * 60;
     const msParSeconde = 1000;
 
-    const jours = Math.floor(diffMs / msParJour);
-    const heures = Math.floor((diffMs % msParJour) / msParHeure);
-    const minutes = Math.floor((diffMs % msParHeure) / msParMinute);
-    const secondes = Math.floor((diffMs % msParMinute) / msParSeconde);
+    const joursEcoules = Math.floor(diffMs / msParJour);
+    const heuresEcoulees = Math.floor((diffMs % msParJour) / msParHeure);
+    const minutesEcoulees = Math.floor((diffMs % msParHeure) / msParMinute);
+    const secondesEcoulees = Math.floor((diffMs % msParMinute) / msParSeconde);
 
-    // Calcul du nombre total d'heures cumulées (en jours * 24 + heures)
-    const totalHeures = jours * 24 + heures;
+    // Calcul du nombre d'années et de mois
+    let moisEcoules = dateActuelle.getMonth() - dateDepart.getMonth();
+    let anneesEcoules = dateActuelle.getFullYear() - dateDepart.getFullYear();
 
-    // Calcul du nombre total de minutes cumulées (en jours * 24 * 60 + heures * 60 + minutes)
-    const totalMinutes = jours * 24 * 60 + heures * 60 + minutes;
+    if (moisEcoules < 0) {
+        moisEcoules += 12;
+        anneesEcoules--;
+    }
 
-    // Calcul du nombre total de secondes cumulées (en jours * 24 * 60 * 60 + heures * 60 * 60 + minutes * 60 + secondes)
-    const totalSecondes = jours * 24 * 60 * 60 + heures * 60 * 60 + minutes * 60 + secondes;
 
-    // Calcul des années et mois écoulés
-    const annees = Math.floor(jours / 365);
-    const mois = Math.floor((jours % 365) / 30); // Environ 30 jours par mois
-
-    $("#days").text(jours);
-    $("#hour").text(totalHeures);
-    $("#minute").text(totalMinutes)
-    $("#second").text(totalSecondes)
+    $("#days").text(joursEcoules);
+    $("#hour").text(heuresEcoulees);
+    $("#minute").text(minutesEcoulees)
+    $("#second").text(secondesEcoulees)
 }
 
 // Exemple d'utilisation
