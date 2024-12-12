@@ -22,6 +22,7 @@
     <div id="main">
         <img src="./assets/img/love_1.svg">
         <div id="countup">
+            <span style="font-style: italic">depuis 21 / 05 / 2024</span>
             <h1 id="days">0</h1>
             <span id="days-span">jours</span>
 
@@ -34,7 +35,7 @@
 <script>
 function calculerTempsEcoule() {
     // Date de départ : 20 mai 2024
-    const dateDepart = new Date(2024, 4, 20); // Les mois sont indexés à partir de 0, donc 4 = mai
+    const dateDepart = new Date(2024, 4, 21, 23, 0, 0, 0);
 
     // Date actuelle
     const dateActuelle = new Date();
